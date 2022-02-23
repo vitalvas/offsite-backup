@@ -36,3 +36,18 @@ systemd-mount -t xfs /dev/sda1 /media/meta/
 
 git clone https://github.com/vitalvas/offsite-backup.git /media/meta/offsite-backup/
 ```
+
+## Encrypted disk
+
+```shell
+/media/meta/offsite-backup/bin/passkey.sh | cryptsetup --batch-mode luksFormat /dev/sda2
+/media/meta/offsite-backup/bin/passkey.sh | cryptsetup open --type luks /dev/sda2 vault-data
+```
+
+```shell
+mkfs.btrfs --data single --metadata single --label vault /dev/mapper/vault-data
+```
+
+```shell
+mount -o noatime,nodiratime,compress=zstd,commit=15 /dev/mapper/vault-data /media/data
+```
