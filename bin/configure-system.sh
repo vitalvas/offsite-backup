@@ -17,7 +17,7 @@ fi
 fgrep -q '/dev/mapper/vault-data' /proc/mounts && {
   [ ! -d '/media/data/config' ] && mkdir /media/data/config
 
-  for subvol in logs restic; do
+  for subvol in logs rclone; do
     [ ! -d "/media/data/${subvol}" ] && {
       btrfs subvolume create /media/data/${subvol}
     }

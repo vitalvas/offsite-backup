@@ -3,7 +3,7 @@
 cd /media/meta/offsite-backup
 
 /usr/bin/git reset --hard >/dev/null
-/usr/bin/git pull origin master
+/usr/bin/git pull origin master >/dev/null
 
 [ -e "/dev/mapper/vault-data" ] || {
   cryptsetup isLuks /dev/sda2 && {
