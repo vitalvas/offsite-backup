@@ -6,7 +6,7 @@
 apt update -qy
 apt upgrade -qy
 
-apt install -qy xfsprogs btrfs-progs git udev cryptsetup parted
+apt install -qy xfsprogs btrfs-progs btrfs-compsize git udev cryptsetup parted
 ```
 
 ## Prepare disk
